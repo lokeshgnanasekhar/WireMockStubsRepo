@@ -185,7 +185,7 @@ public class WireMockStubs {
 
     }
 
-    public void proxying(){
+   /* public void proxying(){
 
         //Proxying
         stubFor(get(urlMatching("/proxy"))
@@ -197,6 +197,24 @@ public class WireMockStubs {
                         .proxiedFrom("http://papajohns.com")
                         .withAdditionalRequestHeader("User-Agent", "Mozilla/5.0 (iPhone; U; CPU iPhone)")));
 
+    }*/
+
+    public void responseTemplate() {
+
+        //To Read url
+        stubFor(get(urlPathEqualTo("/responsetemplate"))
+                .willReturn(aResponse()
+                        .withBody("{{request.path.[0]}}")));
+                       // .withTransformers("response-template"))); -- will be used if ResponseTemplateTransformer(false)
+                       //during confuration
+
+        //To read query String
+        stubFor(get(urlPathEqualTo("/template"))
+                .withQueryParam("searchFor" ,equalTo("WireMock"))
+                .willReturn(aResponse()
+                        .withBody("You Search For <B>{{request.query.searchFor}}</B>")));
+        // .withTransformers("response-template"))); -- will be used if ResponseTemplateTransformer(false)
+        //during confuration
     }
 
 

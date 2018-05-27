@@ -3,6 +3,7 @@ package com.tech;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -16,7 +17,8 @@ public class MockRunner {
 
         WireMockConfiguration configuration = new WireMockConfiguration()
                 .usingFilesUnderDirectory("resources/api/responses/")
-                .port(9997);
+                .port(9997)
+                .extensions(new ResponseTemplateTransformer(true));
         WireMockServer wireMockServer = new WireMockServer(configuration);
         wireMockServer.start();
         WireMock.configureFor("localhost", wireMockServer.port());
