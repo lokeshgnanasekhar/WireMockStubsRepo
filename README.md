@@ -15,5 +15,15 @@ If you need to add any new stub go to `WireMockStubs.java` and add you own stub.
 
 By default this code will run WireMock Server in `9997` port .So, When you test, you need to use `http://localhost:9997/mockapiendpoint`.
 
+#### Examples
+`http://localhost:9997/simpleMock`
+
+`http://localhost:9997/jsonResponseMock`
+
+`http://locahost:9997/delayed`
+
+`http://localhost:9997/template?searchFor=WireMock`
+ 
+
 ##### Note: You can change to any other port if you require. 
 ##### Any new stub if you add you need to stop the server / Program and should Re-run to make stub work.
